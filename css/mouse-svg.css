@@ -1,0 +1,262 @@
+.mouse-visualizer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-height: 480px;
+  background: radial-gradient(
+    circle at 50% 45%,
+    var(--bg-surface-raised) 0%,
+    var(--bg-surface) 70%
+  );
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2xl);
+  overflow: hidden;
+}
+
+.svg-view-switcher {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: var(--space-md);
+  z-index: 10;
+}
+
+.mouse-svg-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mouse-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.4));
+  user-select: none;
+}
+
+.mouse-part {
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.mouse-base {
+  fill: var(--mouse-body);
+  stroke: var(--border-default);
+  stroke-width: 2;
+}
+
+.mouse-button-part {
+  fill: var(--bg-surface-raised);
+  stroke: var(--border-highlight);
+  stroke-width: 1.5;
+}
+
+.mouse-button-part:hover {
+  fill: var(--bg-surface-active);
+  stroke: var(--accent);
+}
+
+.mouse-button-part.active {
+  fill: var(--accent-subtle);
+  stroke: var(--accent);
+  filter: drop-shadow(0 0 8px var(--accent-glow));
+}
+
+.mouse-wheel-part {
+  fill: var(--mouse-wheel);
+  stroke: var(--border-default);
+  stroke-width: 1.5;
+}
+
+.mouse-wheel-part:hover,
+.mouse-wheel-part.active {
+  fill: var(--accent-subtle);
+  stroke: var(--accent);
+}
+
+.callout-pin {
+  cursor: pointer;
+}
+
+.pin-circle {
+  fill: var(--bg-surface);
+  stroke: var(--border-highlight);
+  stroke-width: 2;
+  transition: all var(--transition-fast);
+}
+
+.pin-text {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  fill: var(--text-secondary);
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+
+.callout-pin.active .pin-circle,
+.callout-pin:hover .pin-circle {
+  stroke: var(--accent);
+  fill: var(--accent);
+}
+
+.callout-pin.active .pin-text,
+.callout-pin:hover .pin-text {
+  fill: var(--on-accent);
+}
+
+.button-callouts-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.button-callout-card {
+  position: absolute;
+  pointer-events: auto;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  padding: var(--space-xs) var(--space-md);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-fast);
+  max-width: 200px;
+}
+
+.button-callout-card:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-lg);
+}
+
+.button-callout-card.active {
+  border-color: var(--accent);
+  background: var(--accent-subtle);
+  box-shadow: 0 0 16px var(--accent-glow);
+}
+
+.button-callout-card .btn-pin-badge {
+  width: 20px;
+  height: 20px;
+  border-radius: var(--radius-full);
+  background: var(--bg-input);
+  border: 1px solid var(--border-default);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.button-callout-card.active .btn-pin-badge {
+  background: var(--accent);
+  color: var(--on-accent);
+  border-color: var(--accent);
+}
+
+.button-callout-card .btn-info {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.button-callout-card .btn-name {
+  font-size: var(--font-xs);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.button-callout-card .btn-bind {
+  font-size: 10px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
+}
+
+.button-item-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.button-item-card:hover {
+  background: var(--bg-surface-raised);
+  border-color: var(--border-highlight);
+}
+
+.button-item-card.active {
+  border-color: var(--accent);
+  background: var(--accent-subtle);
+}
+
+.button-item-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.button-item-index {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-md);
+  background: var(--bg-input);
+  border: 1px solid var(--border-default);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: var(--font-xs);
+  font-weight: 700;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.button-item-card.active .button-item-index {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.button-item-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.button-item-name {
+  font-size: var(--font-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.button-item-binding {
+  font-size: var(--font-xs);
+  color: var(--text-muted);
+}
