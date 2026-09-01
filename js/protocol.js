@@ -186,11 +186,6 @@ export const DPI_SWITCH_MODES = {
   3: "DPI - (Decrease)",
 };
 
-export const TILT_SCROLL_MODES = {
-  1: "Scroll Left",
-  2: "Scroll Right",
-};
-
 export const MULTIMEDIA_KEYS = [
   { name: "Media Player", code: 0x0183 },
   { name: "Play/Pause", code: 0x00cd },
